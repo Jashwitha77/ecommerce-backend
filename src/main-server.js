@@ -12,10 +12,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Routes
+const userRoutes = require('./routes/user.routes');
+
 // Basic health check route
 app.get('/', (req, res) => {
   res.json({ message: 'E-commerce API is running successfully' });
 });
+
+// Mount Routes
+app.use('/api/users', userRoutes);
 
 // Port and DB configuration
 const PORT = process.env.PORT || 5000;
