@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const dns = require('dns');
+
+// Force Node.js to use Google DNS for MongoDB Atlas SRV lookup
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 // Load environment variables
 dotenv.config();
