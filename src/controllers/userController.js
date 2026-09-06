@@ -8,9 +8,8 @@ const generateToken = (id, role) => {
   });
 };
 
-// @desc    Register a new user
-// @route   POST /api/users/register
-// @access  Public
+//Registration
+
 const registerUser = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -49,9 +48,8 @@ const registerUser = async (req, res) => {
   }
 };
 
-// @desc    Authenticate user & login
-// @route   POST /api/users/login
-// @access  Public
+// login 
+
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -88,9 +86,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-// @desc    Get current user profile
-// @route   GET /api/users/profile
-// @access  Private
+
 const getUserProfile = async (req, res) => {
   try {
     // req.user was set by authenticate middleware
@@ -103,9 +99,7 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-// @desc    Update current user profile
-// @route   PUT /api/users/profile
-// @access  Private
+
 const updateUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
