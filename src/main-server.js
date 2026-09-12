@@ -7,6 +7,7 @@ const dns = require('dns');
 // Force Node.js to use Google DNS for MongoDB Atlas SRV lookup
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
+const productRoutes = require('./routes/product.routes');
 // Load environment variables
 dotenv.config();
 
@@ -15,7 +16,7 @@ const app = express();
 // Global Middleware
 app.use(express.json());
 app.use(cors());
-
+app.use('/api/products', productRoutes);
 // Routes
 const userRoutes = require('./routes/user.routes');
 
