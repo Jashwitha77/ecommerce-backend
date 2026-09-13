@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const dns = require('dns');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 // Force Node.js to use Google DNS for MongoDB Atlas SRV lookup
 dns.setServers(['8.8.8.8', '8.8.4.4']);
@@ -17,6 +19,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use('/api/products', productRoutes);
+
+// Swagger Documentation Route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // Routes
 const userRoutes = require('./routes/user.routes');
 
